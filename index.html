@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!-- ═══════════════════════════════════════════════════════════════
+     EDIT THESE FIVE LINES FOR EACH EVENT
+
+     WhatsApp, Facebook and Google read these without running any
+     JavaScript, so they cannot come from the Sheet. They are what
+     shows when someone shares this link.
+     ═══════════════════════════════════════════════════════════════ -->
+<title>31st NAPRAS &amp; 20th NBIS Annual General Meeting</title>
+<meta property="og:title" content="31st NAPRAS &amp; 20th NBIS Annual General Meeting">
+<meta property="og:description" content="Register for the conference and submit your abstract. August 2027, Ibadan.">
+<meta property="og:image" content="https://naprasnbis2027.confhub.ng/napras-logo.png">
+<meta property="og:url" content="https://naprasnbis2027.confhub.ng">
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Register for the conference and submit your abstract.">
+<meta name="theme-color" content="#2B46D4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   THE ONLY LINE YOU EVER EDIT
+   Paste the /exec URL for this event's Apps Script deployment.
+   ═══════════════════════════════════════════════════════════════ */
+const API_URL = "PASTE_YOUR_EXEC_URL_HERE";
+</script>
+
+<style>
+:root{
+  --ink:#0B1524; --slate:#4A5B72; --mist:#8A9AAF; --line:#E2E8F0;
+  --bg:#F5F8FC; --card:#FFFFFF;
+  --brand:#2B46D4; --brand-dark:#1E2F9E; --brand-soft:#EEF1FE; --sky:#0E9DE5;
+  --grad:linear-gradient(130deg,#2B46D4,#0E9DE5);
+  --go:#10B981; --amber:#F59E0B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+     background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;
+     padding:20px 16px 60px}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.wrap{max-width:560px;margin:0 auto}
+
+.head{background:var(--grad);color:#fff;border-radius:20px;padding:34px 28px;margin-bottom:16px;text-align:center}
+.head .kick{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:700}
+.head h1{font-size:1.5rem;font-weight:800;letter-spacing:-.025em;line-height:1.25;margin:10px 0 8px}
+.head .meta{font-size:.9rem;opacity:.93}
+
+.tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;
+      padding:20px 22px;margin-bottom:11px;text-decoration:none;color:inherit;
+      transition:border-color .18s,transform .18s,box-shadow .18s;position:relative}
+.tile:hover{border-color:#C9D3F6;transform:translateY(-2px);box-shadow:0 12px 30px -14px rgba(11,21,36,.3)}
+.tile h2{font-size:1.06rem;font-weight:700;letter-spacing:-.015em;margin-bottom:4px}
+.tile p{font-size:.88rem;color:var(--slate)}
+.tile .arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);
+             color:var(--brand);font-size:1.2rem}
+.tile.primary{border:2px solid var(--brand);background:var(--brand-soft)}
+.pill{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.pill.open{background:rgba(16,185,129,.15);color:#07714E}
+.pill.closed{background:#F1F5F9;color:var(--mist)}
+.pill.soon{background:rgba(245,158,11,.16);color:#8A5A08}
+
+.state{background:var(--card);border-radius:20px;padding:44px 28px;text-align:center;
+       box-shadow:0 18px 44px -18px rgba(11,21,36,.28)}
+.state h1{font-size:1.2rem;margin-bottom:10px}
+.state p{color:var(--slate);font-size:.94rem}
+.diag{margin-top:20px;padding:14px 16px;background:#FEF6E7;border:1px solid #F5D9A8;
+      border-radius:12px;font-size:.82rem;color:#7A4E06;text-align:left;line-height:1.5}
+.foot{text-align:center;margin-top:22px;font-size:.78rem;color:var(--mist)}
+.foot a{color:var(--brand);text-decoration:none;font-weight:600}
+.logos{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.logos img{height:64px;width:auto;max-width:130px;object-fit:contain;
+           background:#fff;border-radius:12px;padding:7px}
+@media(max-width:480px){.logos img{height:52px}}
+
+</style>
+</head>
+<body>
+<div class="wrap" id="root">
+  <div class="state"><h1>Loading…</h1></div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('root');
+
+  function esc(s){
+    return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  }
+  function applyBrand(hex){
+    if (!/^#[0-9a-fA-F]{6}$/.test(String(hex||''))) return;
+    var r=parseInt(hex.substr(1,2),16), g=parseInt(hex.substr(3,2),16), b=parseInt(hex.substr(5,2),16);
+    var li=function(v){ return Math.min(255, Math.round(v+(255-v)*0.35)); };
+    var second='#'+[li(r),li(g),li(b)].map(function(v){ return ('0'+v.toString(16)).slice(-2); }).join('');
+    var rt=document.documentElement;
+    rt.style.setProperty('--brand',hex); rt.style.setProperty('--sky',second);
+    rt.style.setProperty('--grad','linear-gradient(130deg,'+hex+','+second+')');
+    rt.style.setProperty('--brand-dark',hex);
+    rt.style.setProperty('--brand-soft','rgba('+r+','+g+','+b+',0.08)');
+    var m=document.querySelector('meta[name=theme-color]'); if(m) m.setAttribute('content',hex);
+  }
+
+  if (!API_URL || API_URL.indexOf('PASTE') === 0){
+    root.innerHTML = '<div class="state"><h1>Not configured yet</h1>' +
+      '<p>The API URL has not been set in this page.</p></div>';
+    return;
+  }
+
+  // The abstract config carries everything this page needs
+  fetch(API_URL + '?action=abstractconfig')
+    .then(function(r){
+      return r.text().then(function(t){
+        if (t.indexOf('<') === 0) throw { detail:'The Apps Script deployment is not public. ' +
+          'Deploy \u2192 Manage deployments \u2192 pencil \u2192 Who has access: Anyone \u2192 Deploy.' };
+        var c; try { c = JSON.parse(t); } catch(e){ throw { detail:'Server did not return valid data.' }; }
+        if (!c || !c.ok) throw { detail:(c && c.error) || 'Unknown problem.' };
+        return c;
+      });
+    })
+    .then(draw)
+    .catch(function(err){
+      root.innerHTML = '<div class="state"><h1>Could not load</h1>' +
+        '<p>Please contact the organisers.</p>' +
+        '<div class="diag"><b>For the organiser:</b><br>' +
+        esc((err && err.detail) || 'Could not reach the server.') + '</div></div>';
+    });
+
+  function draw(c){
+    applyBrand(c.brand);
+    if (c.event) document.title = c.event;
+    var L = c.links || {};
+    var logos = (L.logos && L.logos.length)
+      ? '<div class="logos">' + L.logos.map(function(u){
+          return '<img src="' + esc(u) + '" alt="" loading="lazy">';
+        }).join('') + '</div>' : '';
+    var tiles = [];
+
+    if (L.register){
+      tiles.push({
+        href: L.register, primary: L.registrationOpen,
+        title: 'Register for the conference',
+        pill: L.registrationOpen ? ['open','Open'] : ['closed','Not yet open'],
+        text: 'Pay online by card or bank transfer. Your delegate pass arrives by email.'
+      });
+    }
+    if (L.abstracts){
+      tiles.push({
+        href: L.abstracts, primary: c.open,
+        title: 'Submit an abstract',
+        pill: c.deadlinePassed ? ['closed','Closed']
+            : c.open ? ['open', c.deadline ? 'Closes ' + c.deadline : 'Open']
+            : ['soon','Opening soon'],
+        text: c.deadlinePassed
+          ? 'The deadline has passed. Authors can still open their submission.'
+          : 'Free to submit. Separate from registration.'
+      });
+    }
+    if (L.app){
+      tiles.push({ href:L.app, title:'Conference app',
+        text:'Programme, faculty, venue and announcements. Works offline.' });
+    }
+    if (L.site){
+      tiles.push({ href:L.site, title:'Association website', text:'' });
+    }
+
+    root.innerHTML =
+      logos +
+      '<div class="head">' +
+        '<div class="kick">Conference</div>' +
+        '<h1>' + esc(c.event) + '</h1>' +
+        '<div class="meta">' + esc(c.dates) + (c.venue ? '<br>' + esc(c.venue) : '') + '</div>' +
+      '</div>' +
+      tiles.map(function(t){
+        return '<a class="tile' + (t.primary ? ' primary' : '') + '" href="' + esc(t.href) + '">' +
+          '<h2>' + esc(t.title) +
+            (t.pill ? '<span class="pill ' + t.pill[0] + '">' + esc(t.pill[1]) + '</span>' : '') +
+          '</h2>' +
+          (t.text ? '<p>' + esc(t.text) + '</p>' : '') +
+          '<span class="arrow">\u2192</span></a>';
+      }).join('') +
+      '<p class="foot">Powered by <a href="https://confhub.ng">ConfHub.ng</a></p>';
+  }
+})();
+</script>
+</body>
+</html>
